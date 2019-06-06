@@ -25,6 +25,7 @@
          :batches [] ;; contains batches of indices for test cases
          :batch-size 16
          :tourn-size 16
+         :training-cases '()
 
          :error-function (fn [p] '(0))
           ;; Function that takes a program and returns a list of errors.

@@ -90,8 +90,6 @@
                          (if (= printed-result (str out-int))
                            0
                            1))))]
-        (println "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" errors "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-
         (if (= data-cases :train)
           (assoc individual :behaviors @behavior :errors errors)
           (assoc individual :test-errors errors))))))
@@ -142,6 +140,7 @@
 (def argmap
   {:error-function (make-smallest-error-function-from-cases (first smallest-train-and-test-cases)
                                                             (second smallest-train-and-test-cases))
+   :training-cases (first smallest-train-and-test-cases)
    :atom-generators smallest-atom-generators
    :max-points 800
    :max-genome-size-in-initial-program 100
