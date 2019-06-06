@@ -193,6 +193,8 @@
   (println "Computing errors... ")
   (compute-errors pop-agents rand-gens novelty-archive @push-argmap)
   (println "Done computing errors.")
+  ;; initializing new batches for every generation
+  (swap! push-argmap assoc :batches (partition (:batch-size @push-argmap)  (shuffle (range 0 (count (:training-cases @push-argmap))))))
   (println "Preserving frontier... ")
   (when (and (:preserve-frontier argmap)
              (or (not (:autoconstructive argmap))
@@ -329,4 +331,3 @@
            (if (nil? next-novelty-archive)
              return-val
              (recur (inc generation) next-novelty-archive))))))))
-

@@ -90,6 +90,8 @@
                          (if (= printed-result (str out-int))
                            0
                            1))))]
+        (println "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" errors "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+
         (if (= data-cases :train)
           (assoc individual :behaviors @behavior :errors errors)
           (assoc individual :test-errors errors))))))
