@@ -187,6 +187,7 @@
 (def argmap
   {:error-function (make-scrabble-score-error-function-from-cases (first scrabble-score-train-and-test-cases)
                                                                   (second scrabble-score-train-and-test-cases))
+   :training-cases (first scrabble-score-train-and-test-cases)
    :atom-generators scrabble-score-atom-generators
    :max-points 4000
    :max-genome-size-in-initial-program 500

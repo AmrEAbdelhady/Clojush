@@ -155,6 +155,7 @@
 (def argmap
   {:error-function (make-last-index-of-zero-error-function-from-cases (first last-index-of-zero-train-and-test-cases)
                                                                       (second last-index-of-zero-train-and-test-cases))
+   :training-cases (first last-index-of-zero-train-and-test-cases)
    :atom-generators last-index-of-zero-atom-generators
    :max-points 1200
    :max-genome-size-in-initial-program 150

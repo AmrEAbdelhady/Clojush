@@ -155,6 +155,7 @@
 (def argmap
   {:error-function (make-double-letters-error-function-from-cases (first double-letters-train-and-test-cases)
                                                                   (second double-letters-train-and-test-cases))
+   :training-cases (first double-letters-train-and-test-cases)
    :atom-generators double-letters-atom-generators
    :max-points 3200
    :max-genome-size-in-initial-program 400

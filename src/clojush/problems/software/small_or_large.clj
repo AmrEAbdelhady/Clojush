@@ -134,6 +134,7 @@
 (def argmap
   {:error-function (make-small-or-large-error-function-from-cases (first small-or-large-train-and-test-cases)
                                                                   (second small-or-large-train-and-test-cases))
+   :training-cases (first small-or-large-train-and-test-cases)
    :atom-generators small-or-large-atom-generators
    :max-points 800
    :max-genome-size-in-initial-program 100

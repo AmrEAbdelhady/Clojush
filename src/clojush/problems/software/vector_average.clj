@@ -150,6 +150,7 @@
 (def argmap
   {:error-function (make-vector-average-error-function-from-cases (first vector-average-train-and-test-cases)
                                                                   (second vector-average-train-and-test-cases))
+   :training-cases (first vector-average-train-and-test-cases)
    :atom-generators vector-average-atom-generators
    :max-points 1600
    :max-genome-size-in-initial-program 200
