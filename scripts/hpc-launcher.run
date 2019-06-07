@@ -18,7 +18,7 @@ NP=`cat $PBS_NODEFILE | wc -l`  # Bash syntax
 #setenv NP `cat $PBS_NODEFILE | wc -l` # tcsh/csh syntax
 
 
-NAMESPACE="compare-string-lengths"
+NAMESPACE="scrabble-score"
 
 SELECTION="batch-tournament"
 
