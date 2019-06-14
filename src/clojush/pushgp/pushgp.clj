@@ -130,7 +130,7 @@
        (nth child-agents i)
        breed
        ; i (nth rand-gens i) pop argmap)))
-       i (nth rand-gens i) (filter #(< (:age %)  (* 20 (inc (quot i 100)) (inc (quot i 100)))) pop) argmap)))
+       i (nth rand-gens i) (filter #(< (:age %)  (* 3 (+ 2 (quot i 100)) (+ 2 (quot i 100)))) pop) argmap)))
   (when-not use-single-thread (apply await child-agents))) ;; SYNCHRONIZE
 
 (defn install-next-generation
