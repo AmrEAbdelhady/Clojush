@@ -115,8 +115,9 @@
 
 (defn produce-new-offspring
   [pop-agents child-agents rand-gens
-   {:keys [decimation-ratio population-size decimation-tournament-size use-single-thread]
+   {:keys [decimation-ratio population-size decimation-tournament-size use-single-thread max-genome-size-in-initial-program atom-generators genome-representation]
     :as argmap}]
+
   (let [pop (if (>= decimation-ratio 1)
               (vec (doall (map deref pop-agents)))
               (decimate (vec (doall (map deref pop-agents)))
@@ -125,12 +126,30 @@
         ages (map :age pop)]
     (reset! min-age (apply min ages))
     (reset! max-age (apply max ages))
+
     (dotimes [i population-size]
-      ((if use-single-thread swap! send)
-       (nth child-agents i)
-       breed
-       ; i (nth rand-gens i) pop argmap)))
-       i (nth rand-gens i) (filter #(< (:age %)  (* 3 (inc (quot i 100)) (inc (quot i 100)))) pop) argmap)))
+      (if (empty? (filter #(< (:age %)  (* 3 (inc (quot i 100)) (inc (quot i 100)) )) pop))
+        ((if use-single-thread swap! send)
+         (nth child-agents i)
+         (fn [_] (make-individual
+           :genome (case genome-representation
+                     :plush (strip-random-insertion-flags
+                             (random-plush-genome
+                              max-genome-size-in-initial-program
+                              atom-generators
+                              argmap))
+                     :plushy (random-plushy-genome
+                              (* 1.165
+                                 max-genome-size-in-initial-program)
+                              atom-generators
+                              argmap))
+           :genetic-operators :random))
+         )
+        ((if use-single-thread swap! send)
+         (nth child-agents i)
+         breed
+         ; i (nth rand-gens i) pop argmap)))
+         i (nth rand-gens i) (filter #(< (:age %)  (* 3 (inc (quot i 100)) (inc (quot i 100)) )) pop) argmap))))
   (when-not use-single-thread (apply await child-agents))) ;; SYNCHRONIZE
 
 (defn install-next-generation
