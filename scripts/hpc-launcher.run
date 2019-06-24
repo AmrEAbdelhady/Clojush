@@ -7,7 +7,7 @@
 #PBS -l walltime=72:00:00
 #PBS -r y
 #PBS -o /usr/local/research/compsci/helmuth/aabdelha/results2
-#PBS -t 70-99
+#PBS -t 0-69
 # This last line is the range of the number of jobs to start, inclusive
 
 # NOTE: Directions for use are at the bottom of this file.
