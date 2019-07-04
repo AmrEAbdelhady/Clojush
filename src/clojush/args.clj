@@ -27,6 +27,8 @@
          :tourn-size 16
          :training-cases '()
 
+         :knobelty-const 0.5
+
          :error-function (fn [p] '(0))
           ;; Function that takes a program and returns a list of errors.
 

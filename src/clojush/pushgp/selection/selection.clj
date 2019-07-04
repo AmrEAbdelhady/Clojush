@@ -12,6 +12,7 @@
         selected (case parent-selection
                    :tournament (tournament-selection preselected argmap)
                    :batch-tournament (batch-selection preselected argmap)
+                   :knobelty (knobelty-selection preselected argmap)
                    :lexicase (lexicase-selection preselected argmap)
                    :epsilon-lexicase (epsilon-lexicase-selection preselected argmap)
                    :elitegroup-lexicase (elitegroup-lexicase-selection preselected argmap)
