@@ -7,9 +7,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; calculate meta-errors
 
-(defn binary-meta-errors
-  [ind evaluated-population argmap]
-  (count (filter #(= 0 %) (:error ((:error-function argmap) ind :train)))))
 
 (defn meta-error-fn-from-keyword
   "Takes a keyword and returns the meta-error function with the corresponding name."
