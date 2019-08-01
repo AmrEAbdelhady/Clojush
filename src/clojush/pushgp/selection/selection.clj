@@ -2,7 +2,7 @@
   (:use [clojush globals random]
         [clojush.pushgp.selection preselection tournament lexicase epsilon-lexicase
          elitegroup-lexicase random-threshold-lexicase random-toggle-lexicase
-         randomly-truncated-lexicase novelty rarified-lexicase batch-tournament]))
+         randomly-truncated-lexicase novelty rarified-lexicase batch-tournament knobelty combined-fitness]))
 
 (defn select
   "Returns a selected parent."
@@ -13,6 +13,7 @@
                    :tournament (tournament-selection preselected argmap)
                    :batch-tournament (batch-selection preselected argmap)
                    :knobelty (knobelty-selection preselected argmap)
+                   :combined-fitness (combined-fitness-selection preselected argmap)
                    :lexicase (lexicase-selection preselected argmap)
                    :epsilon-lexicase (epsilon-lexicase-selection preselected argmap)
                    :elitegroup-lexicase (elitegroup-lexicase-selection preselected argmap)
