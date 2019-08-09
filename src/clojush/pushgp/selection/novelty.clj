@@ -118,7 +118,11 @@
   [pop {:keys [tournament-size] :as argmap}]
   (let [tournament-set (doall (for [_ (range tournament-size)]
                                 (lrand-nth pop)))]
-    (reduce (fn [i1 i2] (if (> (:novelty i1) (:novelty i2)) i1 i2))
+    (reduce
+      (fn [i1 i2]
+        (if (>
+          (:novelty i1) (:novelty i2))
+           i1 i2))
             tournament-set)))
 
 
